@@ -147,12 +147,16 @@
                 linkOverlay.style.visibility = 'visible';
             });
 
-            // Copy link functionality
-            copyButton.addEventListener('click', function () {
+             // Copy link functionality
+          copyButton.addEventListener('click', function () {
                 navigator.clipboard.writeText(wishLink.href)
-                    .then(() => alert('Link copied to clipboard!'))
+                    .then(() => {
+                        alert('Link copied to clipboard!');
+                        linkOverlay.style.visibility = 'hidden'; // Hide the link overlay after copying
+                    })
                     .catch(err => console.error('Error copying text:', err));
             });
+
         });
     </script>
 </body>
