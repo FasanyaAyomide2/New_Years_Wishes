@@ -125,7 +125,7 @@
                 customWishField.classList.toggle('d-none', !this.checked);
             });
 
-            // Handle form submission
+         // Handle form submission
             wishForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 const name = document.getElementById('nameInput').value;
@@ -133,11 +133,17 @@
                 const customWish = isCustomWish ? document.getElementById('wishInput').value : '';
                 const currentUrl = window.location.href;
 
-                const wishUrl = currentUrl.replace('index.html', 'wish.html') +
-                    `?name=${encodeURIComponent(name)}&wish=${encodeURIComponent(customWish)}`;
+                // Assuming both index.html and wish.html are in the same directory
+                const wishUrl = currentUrl.includes('index.html')
+                    ? currentUrl.replace('index.html', 'wish.html')
+                    : currentUrl + 'wish.html';
 
-                wishLink.href = wishUrl;
-                wishLink.innerText = wishUrl;
+                // Add query parameters for name and wish
+                const finalWishUrl = wishUrl + `?name=${encodeURIComponent(name)}&wish=${encodeURIComponent(customWish)}`;
+
+                // Update the link with the new URL
+                wishLink.href = finalWishUrl;
+                wishLink.innerText = finalWishUrl;
                 linkOverlay.style.visibility = 'visible';
             });
 
