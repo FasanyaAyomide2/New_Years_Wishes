@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Wishes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="asset/style.css">
+
+</head>
+
+<body style="text-align: center;">
+    <img src="asset/2025.png" alt="Welcome to 2025" class="corner-image left">
+    <img src="asset/gift.png" alt="Happy New Year" class="corner-image right">
+
+    <div class="content-container">
+        <div class="wish-title">🎉 New Year Wishes 🎊</div>
+        <div id="wishText" class="wish-text">Loading your wish...</div>
+        <div id="senderName" class="wish-text font-italic">Sent by: Loading...</div>
+        <div class="wish-titlemin">Happy new year!</div>
+        <a href="index.html" class="btn-create-wish">Create Your Own Wish</a>
+    </div>
+
+    <div class="footer">
+        Made by <a href="https://github.com/FasanyaAyomide2" target="_blank">Fasanya Ayomide (Solution)</a>
+    </div>
+    <audio id="hidden-audio" autoplay loop>
+        <source src="asset/audio.mp3" type="audio/ogg">
+        <source src="asset/audio.mp3" type="audio/mpeg">
+    </audio>
+    <button id="play-audio" style="background: transparent; border: transparent;"><img src="asset/new.png" width="150"
+            alt=""></button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('hidden-audio');
+            const playButton = document.getElementById('play-audio');
+
+            audio.style.display = 'none';
+
+            playButton.addEventListener('click', () => {
+                audio.play().then(() => {
+                    console.log('Audio is playing!');
+                }).catch((error) => {
+                    console.error('Audio playback failed:', error);
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                var button = document.getElementById("play-audio");
+
+                var event = new MouseEvent('click', {
+                    'bubbles': true,
+                    'cancelable': true,
+                    'view': window
+                });
+
+                button.dispatchEvent(event);
+            }, 5000);
+        });
+    </script>
+    <script>
+        const defaultWishes = [
+            "Wishing you a year filled with love, laughter, and endless success!",
+            "May all your dreams come true this New Year!",
+            "Cheers to a bright future and wonderful opportunities ahead!",
+            "Happy New Year! May happiness find you every step of the way.",
+            "Sending you my warmest wishes for a joyful New Year!",
+            "Here's to a year of great memories and fantastic adventures!",
+            "May the New Year bring you health, wealth, and happiness.",
+            "Wishing you a year of peace, prosperity, and love!",
+            "Let’s welcome the New Year with hope and positivity!",
+            "Happy New Year! Shine as bright as the fireworks tonight!",
+            "May the coming year bless you with endless reasons to smile.",
+            "Here’s to a New Year full of achievements and unforgettable moments!",
+            "Wishing you a fabulous year ahead!",
+            "Happy New Year! May it be your best year yet!",
+            "Start the New Year with a fresh mindset and endless opportunities!",
+            "May this year bring you closer to your goals and dreams!",
+            "Let’s celebrate this New Year with hope for a better tomorrow!",
+            "Happy New Year! Let the past year’s struggles be your stepping stones.",
+            "A new year means new beginnings, embrace it fully!",
+            "Wishing you and your family a New Year full of love and joy!"
+        ];
+
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get("name");
+        const wish = urlParams.get("wish");
+
+        // Set content dynamically
+        const wishTextElement = document.getElementById("wishText");
+        const senderNameElement = document.getElementById("senderName");
+
+        if (wish && wish.trim()) {
+            wishTextElement.textContent = decodeURIComponent(wish);
+        } else {
+            const randomWish = defaultWishes[Math.floor(Math.random() * defaultWishes.length)];
+            wishTextElement.textContent = randomWish;
+        }
+
+        if (name && name.trim()) {
+            senderNameElement.textContent = `Sent by: ${decodeURIComponent(name)}`;
+        } else {
+            senderNameElement.textContent = "Sent by: Someone special";
+        }
+
+        // Array of background image paths
+        const backgrounds = [
+            'asset/backgrounds/animate.gif',
+            'asset/backgrounds/animate2.gif',
+            'asset/backgrounds/animate3.gif',
+            'asset/backgrounds/bg1.jpg',
+            'asset/backgrounds/bg2.jpg',
+            'asset/backgrounds/bg3.jpg',
+            'asset/backgrounds/bg4.jpg',
+            'asset/backgrounds/bg5.jpg',
+            'asset/backgrounds/bg6.jpg',
+            'asset/backgrounds/bg7.jpg',
+            'asset/backgrounds/bg8.jpg',
+            'asset/backgrounds/bg9.jpg',
+            'asset/backgrounds/bg10.jpg',
+            'asset/backgrounds/bg11.jpg',
+            'asset/backgrounds/bg12.jpg',
+            'asset/backgrounds/bg13.jpg'
+        ];
+
+        // Set random background on load
+        document.body.style.backgroundImage = `url(${backgrounds[Math.floor(Math.random() * backgrounds.length)]})`;
+    </script>
+</body>
+
+</html>
